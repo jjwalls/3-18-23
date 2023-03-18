@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 
 
+
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -63,6 +64,7 @@ public class RobotContainer {
     //Extend and Retract Bindings
     Trigger p_square = m_pilotController.square();
     Trigger p_circle = m_pilotController.circle();
+    Trigger p_cross = m_pilotController.cross();
     
     
     
@@ -97,6 +99,7 @@ public class RobotContainer {
     //Extend and Retract Buttons
     p_square.whileTrue(new ExtendIntake(m_Intake,1));
     p_circle.whileTrue(new RetractIntake(m_Intake, 1));
+    p_cross.whileTrue(new DriveForDistance(m_drivetrain, 5.0, false, 0.5));
   }
 
   /**
