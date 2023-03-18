@@ -26,7 +26,6 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
   private AnalogUltrasonic ultrasonic;
-  private Drivetrain m_drivetrain;
 
   //private PlatformBalance platformBalance;
 
@@ -39,14 +38,12 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    m_drivetrain = new Drivetrain();
     m_robotContainer = new RobotContainer();
    // platformBalance = new PlatformBalance();
     CameraServer.startAutomaticCapture(0);
     CameraServer.startAutomaticCapture(1);
     ultrasonic = new AnalogUltrasonic(0, 102.4 / 5.0);
-    SmartDashboard.putNumber("Distance (inches)", 48.0);
-SmartDashboard.putNumber("Speed", 0.5);
+ 
   }
 
   /**
@@ -97,9 +94,7 @@ SmartDashboard.putNumber("Speed", 0.5);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    double distance = SmartDashboard.getNumber("Distance (inches)", 48.0);
-double speed = SmartDashboard.getNumber("Speed", 0.5);
-m_autonomousCommand = new DriveForDistance(m_drivetrain, distance, false, speed);
+    
 m_autonomousCommand.schedule();
     //platformBalance.periodic();
   }
